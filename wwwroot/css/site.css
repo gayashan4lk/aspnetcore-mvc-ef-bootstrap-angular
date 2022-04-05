@@ -23,3 +23,32 @@ label {
     color: #fff;
     background-color: cornflowerblue;
 }
+
+ul.product-props {
+    font-size: small;
+}
+
+ul.product-props li {
+    list-style-type: none;
+}
+
+img.product-props {
+    margin: 10px;
+    border: 5px solid rgb(66, 54, 54);
+}
+
+.product-info {
+    border: 1px solid gray;
+    display: inline-block;
+    padding: 5px 20px;
+    margin: 10px;
+    width: 450px;
+    background-color: lightgray;
+    border-radius: 5px;
+}
+
+.product-info img {
+    margin: 3px;
+    float: left;
+    max-width: 150px;
+}
