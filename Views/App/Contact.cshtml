@@ -1,8 +1,34 @@
-﻿<p>This is @ViewBag.Title.</p>
-<h3>Here is our contact details.</h3>
-<ul>
+﻿@model ContactViewModel
+
+@{
+    ViewBag.Title = "Contact us";
+}
+
+<form method="post">
+    <label asp-for="Name">Your Name:</label>
+    <br />
+    <input asp-for="Name" type="text" />
+    <br />
+    <label asp-for="Email">Email:</label>
+    <br />
+    <input asp-for="Email" type="email" />
+    <br />
+    <label asp-for="Subject">Subject:</label>
+    <br />
+    <input asp-for="Subject" type="text" />
+    <br />
+    <label asp-for="Message">Message:</label>
+    <br />
+    <textarea asp-for="Message" rows="4"></textarea>
+    <br />
+    <input type="submit" value="Send Message" />
+</form>
+
+@*<ul>
     <li>+65 254 556</li>
     <li>sekiro@SekiroApp.com</li>
     <li>Yakumoro</li>
     <li>Japan</li>
-</ul>
+</ul>*@
+
+<h1>Contact</h1>

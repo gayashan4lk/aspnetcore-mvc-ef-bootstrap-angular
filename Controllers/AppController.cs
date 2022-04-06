@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SekiroApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +19,22 @@ namespace SekiroApp.Controllers
         [HttpGet("contact")]
         public IActionResult Contact()
         {
-            throw new InvalidOperationException("Shit happens!");
-            ViewBag.Title = "Contact Page";
-            return View(ViewBag);
+            //throw new InvalidOperationException("Shit happens!");
+            //ViewBag.Title = "Contact Page";
+            return View();
+        }
+
+        [HttpPost("contact")]
+        public IActionResult Contact(ContactViewModel model)
+        {
+            //ViewBag.Title = "Contact us";
+            return View();
         }
 
         [HttpGet("About")]
         public IActionResult About()
         {
-            ViewBag.Title = "About Page";
+            //ViewBag.Title = "About Page";
             ViewBag.Message = "This is message from AppController. You are seeing the About page.";
 
             //This causes error! why??
