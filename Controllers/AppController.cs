@@ -15,12 +15,14 @@ namespace SekiroApp.Controllers
             return View();
         }
 
+        [HttpGet("contact")]
         public IActionResult Contact()
         {
             ViewBag.Title = "Contact Page";
             return View(ViewBag);
         }
 
+        [HttpGet("About")]
         public IActionResult About()
         {
             ViewBag.Title = "About Page";
