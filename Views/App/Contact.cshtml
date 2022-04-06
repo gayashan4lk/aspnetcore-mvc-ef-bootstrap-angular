@@ -20,7 +20,7 @@
     <input asp-for="Email" type="email" />
     <span asp-validation-for="Email"></span>
     <br />
-    <label asp-for="Subject">Subject:</label>
+    <label asp-for="Subject">Subject:</label> 
     <br />
     <input asp-for="Subject" type="text" />
     <span asp-validation-for="Subject"></span>
@@ -31,6 +31,7 @@
     <span asp-validation-for="Message"></span>
     <br />
     <input type="submit" value="Send Message" />
+    <div>@ViewBag.UserMessage</div>
 </form>
 
 @*<ul>
