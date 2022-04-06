@@ -22,16 +22,20 @@ namespace SekiroApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseDefaultFiles();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
             app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("Default",
                     "/{controller}/{action}/{id?}",
-                    new { controller = "App", action = "Index" }
-                    );
+                    new { controller = "App", action = "Index" });
             });
             /*app.Run(async context =>
             {

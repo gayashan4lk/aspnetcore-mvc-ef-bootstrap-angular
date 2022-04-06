@@ -11,6 +11,7 @@ namespace SekiroApp.Controllers
     {
         public IActionResult Index()
         {
+            //throw new InvalidProgramException("Shit happens!");            
             return View();
         }
     }
