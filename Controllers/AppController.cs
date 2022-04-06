@@ -18,6 +18,7 @@ namespace SekiroApp.Controllers
         [HttpGet("contact")]
         public IActionResult Contact()
         {
+            throw new InvalidOperationException("Shit happens!");
             ViewBag.Title = "Contact Page";
             return View(ViewBag);
         }
