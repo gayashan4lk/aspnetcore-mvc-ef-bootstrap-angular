@@ -28,6 +28,15 @@ namespace SekiroApp.Controllers
         public IActionResult Contact(ContactViewModel model)
         {
             //ViewBag.Title = "Contact us";
+            if (ModelState.IsValid)
+            {
+                // Send the email
+            }
+            else
+            {
+                //Show the errors
+            }
+
             return View();
         }
 
