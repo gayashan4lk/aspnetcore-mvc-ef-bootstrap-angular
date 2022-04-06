@@ -7,25 +7,32 @@
     
 </head>
 <body>
-    <header>
-        <h1>Welcome to Sekiro</h1>
-        <menu>
-            <ul>
-                <li><a asp-controller="App" asp-action="Index">Home</a></li>
-                <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
-                <li><a asp-controller="App" asp-action="About">About</a></li>
-            </ul>
-        </menu>
+    <header class="container">
+        <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+            <h1 class="navbar-brand">Welcome to Sekiro</h1>
+            <button class="navbar-toggler">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="theMenu" class="navbar-collapse collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="Index">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="Contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="About">About</a></li>
+                </ul>
+            </div>
+        </nav>
         <hr />
     </header>
-    <section>
+    <section class="container">
         <h2>@ViewBag.Title</h2>
         @RenderBody()
     </section>
-    <footer>
+    <footer class="container">
         <hr />
-        <h1>Footer</h1>
-        <p>Copyright Sekiro: Shadow Die Twice 2022</p>
+        <div class="text-center">
+            <h1>Footer</h1>
+            <p>Copyright Sekiro: Shadow Die Twice 2022</p>
+        </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
