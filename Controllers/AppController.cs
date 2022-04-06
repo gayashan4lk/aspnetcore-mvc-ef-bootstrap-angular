@@ -14,5 +14,24 @@ namespace SekiroApp.Controllers
             //throw new InvalidProgramException("Shit happens!");            
             return View();
         }
+
+        public IActionResult Contact()
+        {
+            ViewBag.Title = "Contact Page";
+            return View(ViewBag);
+        }
+
+        public IActionResult About()
+        {
+            ViewBag.Title = "About Page";
+            ViewBag.Message = "This is message from AppController. You are seeing the About page.";
+
+            //This causes error! why??
+            // RuntimeBinderException: Cannot apply indexing with [] to an expression of type 'System.Dynamic.DynamicObject'
+            /*ViewBag["Title"] = "Title";
+            ViewBag["Message"] = "This is message from AppController. You are seeing the About page.";*/
+
+            return View(ViewBag);
+        }
     }
 }

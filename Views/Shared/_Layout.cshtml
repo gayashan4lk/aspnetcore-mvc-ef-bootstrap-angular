@@ -6,12 +6,26 @@
     
 </head>
 <body>
-    <header>Header</header>
+    <header>
+        <h1>Welcome to Sekiro</h1>
+        <menu>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/App/Contact">Contact</a></li>
+                <li><a href="/App/About">About</a></li>
+            </ul>
+        </menu>
+        <hr />
+    </header>
     <section>
         <h2>@ViewBag.Title</h2>
         @RenderBody()
     </section>
-    <footer>Copyright Sekiro: Shadow Die Twice 2022</footer>
+    <footer>
+        <hr />
+        <h1>Footer</h1>
+        <p>Copyright Sekiro: Shadow Die Twice 2022</p>
+    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/index.js"></script>
 </body>
