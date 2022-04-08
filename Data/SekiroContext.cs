@@ -24,7 +24,7 @@ namespace SekiroApp.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            optionsBuilder.UseSqlServer(_configuration["ConnectionStrings:SekiroContextDb"]);
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("SekiroContextDb"));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,12 +32,20 @@ namespace SekiroApp.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Product>()
-                .HasData(new Order()
-                {
-                    Id = 1,
-                    OrderDate = DateTime.UtcNow,
-                    OrderNumber = "12345"
-                });
+              .Property(p => p.Price)
+              .HasColumnType("money");
+
+            modelBuilder.Entity<OrderItem>()
+              .Property(o => o.UnitPrice)
+              .HasColumnType("money");
+
+            modelBuilder.Entity<Order>()
+              .HasData(new Order()
+              {
+                  Id = 1,
+                  OrderDate = DateTime.UtcNow,
+                  OrderNumber = "12345"
+              });
         }
     }
 }

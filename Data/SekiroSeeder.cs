@@ -28,13 +28,27 @@ namespace SekiroApp.Data
             if (!_context.Products.Any())
             {
                 // need to create sample data
-                var filePath = Path.Combine(_environment.ContentRootPath, "/Data/art.json");
+                var filePath = Path.Combine(_environment.ContentRootPath, "Data/art.json");
                 var json = File.ReadAllText(filePath);
                 var products = JsonSerializer.Deserialize<IEnumerable<Product>>(json);
 
                 _context.Products.AddRange(products);
 
-                var order = new Order()
+                var order = _context.Orders.Where(o => o.Id == 1).FirstOrDefault();
+                if(order != null)
+                {
+                    order.Items = new List<OrderItem>()
+                    {
+                        new OrderItem()
+                        {
+                            Product = products.First(),
+                            Quantity = 5,
+                            UnitPrice = products.First().Price
+                        }
+                    };
+                }
+
+                /*var order = new Order()
                 {
                     OrderDate = DateTime.Today,
                     OrderNumber = "10001",
@@ -49,7 +63,7 @@ namespace SekiroApp.Data
                     }
                 };
 
-                _context.Orders.Add(order);
+                _context.Orders.Add(order);*/
 
                 _context.SaveChanges();
             }
