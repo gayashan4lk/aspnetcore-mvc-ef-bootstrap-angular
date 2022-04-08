@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using SekiroApp.Data;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SekiroApp
 {
@@ -14,7 +16,29 @@ namespace SekiroApp
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+
+            if(args.Length == 1 && args[0].ToLower() == "/seed")
+            {
+                RunSeeding(host);
+            }
+            else
+            {
+                host.Run();
+            }
+        }
+
+        private static void RunSeeding(IHost host)
+        {
+            var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
+
+            using (var scope = scopeFactory.CreateScope())
+            {
+                var seeder = scope.ServiceProvider.GetService<SekiroSeeder>();
+                seeder.Seed();
+            }
+
+            
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

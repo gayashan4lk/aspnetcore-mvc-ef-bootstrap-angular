@@ -11,15 +11,31 @@ using SekiroApp.Services;
 using SekiroApp.Data;
 using Microsoft.EntityFrameworkCore;
 
+using Microsoft.Extensions.Configuration;
+
 namespace SekiroApp
 {
     public class Startup
     {
+        /*private readonly IConfiguration _config;
+
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+        
+        public Startup(IConfiguration config)
+        {
+            _config = config;
+        }*/
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SekiroContext>();
+            /*services.AddDbContext<SekiroContext>(config =>
+            {
+                config.UseSqlServer(_config.GetConnectionString("SekiroConnectionString"));
+            });*/
+
+            services.AddTransient<SekiroSeeder>();
 
             services.AddTransient<IMailService, NullMailService>();
 
