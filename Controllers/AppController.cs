@@ -13,16 +13,18 @@ namespace SekiroApp.Controllers
     public class AppController: Controller
     {
         private readonly IMailService _mailService;
-        private readonly SekiroContext _context;
+        private readonly ISekiroRepository _repository;
 
-        public AppController(IMailService mailService, SekiroContext context)
+        public AppController(IMailService mailService, ISekiroRepository repository)
         {
             _mailService = mailService;
-            _context = context;
+            _repository = repository;
         }
+
         public IActionResult Index()
         {
-            //throw new InvalidProgramException("Shit happens!");            
+            //throw new InvalidProgramException("Shit happens!");
+            //var results = _context.Products.ToList();
             return View();
         }
 
@@ -66,9 +68,7 @@ namespace SekiroApp.Controllers
         [HttpGet("shop")]
         public IActionResult Shop()
         {
-            var results = from p in _context.Products
-                          orderby p.Category
-                          select p;
+            var results = _repository.GetAllProducts();
             return View(results.ToList());
         }
     }

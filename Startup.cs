@@ -39,6 +39,10 @@ namespace SekiroApp
 
             services.AddTransient<IMailService, NullMailService>();
 
+            services.AddScoped<ISekiroRepository, SekiroRepository>();
+
+            services.AddMvc();
+
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.AddRazorPages();
