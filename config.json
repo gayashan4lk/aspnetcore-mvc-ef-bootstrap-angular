@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "SekiroContextDb": "Data Source=(localdb)\\ProjectModels;Initial Catalog=SekiroAppDb;Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=true"
+  }
+}

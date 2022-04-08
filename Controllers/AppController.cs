@@ -6,16 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SekiroApp.Services;
+using SekiroApp.Data;
 
 namespace SekiroApp.Controllers
 {
     public class AppController: Controller
     {
         private readonly IMailService _mailService;
+        private readonly SekiroContext _context;
 
-        public AppController(IMailService mailService)
+        public AppController(IMailService mailService, SekiroContext context)
         {
             _mailService = mailService;
+            _context = context;
         }
         public IActionResult Index()
         {
@@ -46,7 +49,7 @@ namespace SekiroApp.Controllers
             return View();
         }
 
-        [HttpGet("About")]
+        [HttpGet("about")]
         public IActionResult About()
         {
             //ViewBag.Title = "About Page";
@@ -58,6 +61,15 @@ namespace SekiroApp.Controllers
             ViewBag["Message"] = "This is message from AppController. You are seeing the About page.";*/
 
             return View(ViewBag);
+        }
+
+        [HttpGet("shop")]
+        public IActionResult Shop()
+        {
+            var results = from p in _context.Products
+                          orderby p.Category
+                          select p;
+            return View(results.ToList());
         }
     }
 }
