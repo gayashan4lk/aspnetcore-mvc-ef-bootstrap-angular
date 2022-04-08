@@ -26,5 +26,18 @@ namespace SekiroApp.Data
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseSqlServer(_configuration["ConnectionStrings:SekiroContextDb"]);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Product>()
+                .HasData(new Order()
+                {
+                    Id = 1,
+                    OrderDate = DateTime.UtcNow,
+                    OrderNumber = "12345"
+                });
+        }
     }
 }
